@@ -64,4 +64,4 @@ scrollDown.current?.scrollIntoView()
 
 
 
-export default CommandBox
+export default CommandBox;

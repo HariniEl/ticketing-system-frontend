@@ -116,4 +116,4 @@ const completed = adminQuery.filter((completed)=>(completed.status === "complete
   )
 }
 
-export default AdminChart
+export default AdminChart;

@@ -132,4 +132,4 @@ error = {touched.newpassword && errors.newpassword}
   )
 }
 
-export default Userchangepassword
+export default Userchangepassword;

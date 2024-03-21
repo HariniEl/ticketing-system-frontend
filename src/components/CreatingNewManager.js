@@ -202,4 +202,4 @@ onBlur={handleBlur}
   )
 }
 
-export default CreatingNewManager
+export default CreatingNewManager;

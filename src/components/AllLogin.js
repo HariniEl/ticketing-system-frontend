@@ -172,4 +172,4 @@ id='manager' name='role' type='radio' />
   )
 }
 
-export default AllLogin
+export default AllLogin;

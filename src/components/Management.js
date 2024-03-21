@@ -210,4 +210,4 @@ managerDetails.position === "Placement team"?
   )
 }
 
-export default Management
+export default Management;

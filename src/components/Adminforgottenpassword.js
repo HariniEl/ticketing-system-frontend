@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import * as yup from 'yup'
@@ -88,4 +88,4 @@ className="inputfeild"
   )
 }
 
-export default Adminforgottenpassword
+export default Adminforgottenpassword;

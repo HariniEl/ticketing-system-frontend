@@ -124,4 +124,4 @@ function Adminhome() {
   )
 }
 
-export default Adminhome
+export default Adminhome;

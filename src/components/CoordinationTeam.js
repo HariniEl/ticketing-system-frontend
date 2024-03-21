@@ -1,3 +1,4 @@
+
 import React ,{useState,useEffect} from 'react'
 import Brightness1Icon from '@mui/icons-material/Brightness1';
 import { API } from '../global/Api';
@@ -129,4 +130,4 @@ function CoordinationTeam() {
   )
 }
 
-export default CoordinationTeam
+export default CoordinationTeam;

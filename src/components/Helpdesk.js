@@ -1,3 +1,4 @@
+
 import{Doughnut} from 'react-chartjs-2'
 import React, { useEffect, useState } from 'react'
 import {chart as chartjs} from 'chart.js/auto'
@@ -289,4 +290,4 @@ const handleRemoveProfile =()=>{
   )
 }
 
-export default Helpdesk
+export default Helpdesk;

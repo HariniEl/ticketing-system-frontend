@@ -83,4 +83,4 @@ className="inputfeild"
   )
 }
 
-export default Userforgottenpassword
+export default Userforgottenpassword;

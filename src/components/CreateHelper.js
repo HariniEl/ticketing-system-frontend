@@ -1,82 +1,133 @@
-import React, { useEffect, useState } from 'react'
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import { useNavigate, useParams } from 'react-router-dom';
+
+import React ,{useState,useEffect} from 'react'
+import Brightness1Icon from '@mui/icons-material/Brightness1';
 import { API } from '../global/Api';
-import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
-import '../App.css'
+import{Doughnut} from 'react-chartjs-2'
+import { useNavigate, useParams } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 
-
-function CreateHelper() {
+function CoordinationTeam() {
     const navigate = useNavigate()
-    const {name,home} = useParams()
-    const [helperList,setHelperList] = useState([])
-    const [helperQuerCompleted,setHelperQuerCompleted] = useState([])
- 
-
-    
-
-
+    const {name} = useParams()
+    const [querys,setQuerys] = useState([])
     useEffect(()=>{
-      fetch(`${API}/admin/helper`,{
-        method :'GET',
-        headers:{
-          /* send a token in headers for authorization */
-         admintoken: localStorage.getItem("token"),
-         
-     }
-      })
-      .then((data)=>data.json())
-      .then((query)=>setHelperList(query.reverse()))
-
-      fetch(`${API}/admin/query`,{
-        method :'GET',
-        headers:{
-          /* send a token in headers for authorization */
-         admintoken: localStorage.getItem("token"),
-     }
-      })
-      .then((data)=>data.json())
-      .then((query)=>setHelperQuerCompleted(query))
-      
-     },[])
+        fetch(`${API}/management/query`,{
+          method :'GET',
+          headers:{
+            /* send a token in headers for authorization */
+           managertoken: localStorage.getItem("token"),
+           
+       }
+        })
+        .then((data)=>data.json())
+        .then((query)=>setQuerys(query.reverse()))
+       },[])
 
 
-    
+       const dateAndTime = new Date()
+       const dd = dateAndTime.getDate()
+     const mm = dateAndTime.getMonth()
+     const yy = dateAndTime.getFullYear()
+     const date = dd + '/' + (mm+1) + '/'+yy
+ 
+        const length = querys.filter((len)=>(len.currentDate === date && len.team === "Coordination Team"))
+     const processing = querys.filter((processing)=>(processing.status === 'processing' && processing.team === "Coordination Team"))
+     const completed = querys.filter((completed)=>(completed.status === 'completed' && completed.team === "Coordination Team"))
+ 
+  const chartData ={
+   type : 'line' ,
+   labels : ['pending','completed'],
+   
+   datasets :[
+       {
+           label : "status",
+           data : [processing.length,completed.length],
+           backgroundColor: ['#EB2A2A','#40D817'],
+       }
+   ]
+ }
+
   return (
-    <div >
-      <Box sx={{ flexGrow: 1,marginTop:4 ,position:"sticky",top:"0px" }}>
-      <AppBar position="static" sx={{bgcolor:"#316472e5" ,borderRadius:"16px"}} >
-        <Toolbar >
-            
-          <Button  color="inherit" onClick={()=>navigate(`/admin/${name}/${home}/helper`)}>Create Helper</Button>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <div>
 
+<div className='charts'>
+    <div  className='helperChart'>
+<Doughnut data={chartData} />
+</div>
 
+<div  className='todyQuerys'>
+<Card sx={{bgcolor:"#d6d6d690", borderRadius: "12px"}}>
+      <CardContent>
+      <h4 className='todayQuerysTitle'>Today Querys</h4>
+        <h1 className='todayQuerysTitle'>{length.length}</h1>
+      </CardContent>
 
-    <div className='adminhelperdetails'> 
-      {helperList.map((n,index)=>(
-        <div id='adminhelperbox' className="alert alert-dark" role="alert" key={index}>
-        <div >{n.helpername}</div>
-        <div className='adminHelper'>
-          <div>{n.name}</div>
-        <div>Created Date<div>{n.createdDate}</div></div>
-        <div>Total completion <div>{helperQuerCompleted.filter((s)=>s.assigedhelpername === n.helpername).length}</div></div>
-        <div><ModeEditOutlinedIcon sx={{cursor:"pointer"}} fontSize='small' onClick={()=>navigate(`/admin/${name}/${home}/${n.helpername}/changehelpername`)}/></div>
-        </div>
-        
-        
-        
-      </div>
-       
-      ))}
-      </div> 
+    </Card>
+</div>
+</div>
+<div className='helperQueryList'>
+<div className='listofquerysBefore450px'>
+        {querys.map((n,index)=>(
+  n.status !== 'pending' && n.team === 'Coordination Team' ?
+        <div id='helperQuerys' className="alert alert-secondary" role="alert"
+        key={index}
+        onClick={()=>navigate(`/manager/${name}/${n._id}`)}
+        >
+          <div className='leftQuery'>
+  <h5 className='ticket'>{n._id}
+  <span className='userQueryTitle'>- {n.queryTitle}</span>
+  </h5>
+ 
+  <div id='category' className="alert alert-warning" role="alert">
+  <div className='categorysName'>{n.category} </div> 
+  <div>
+     <Brightness1Icon sx={{color:n.status === 'completed' ? "#4AE211" :"#E72D1A"}}/>
+     </div>
+  </div>
+  </div>
+  <div className='rightQuery'>
+  <h5 className='dateAndTime'>{n.currentDate}<br/>{n.currentTime}</h5>
+  <h5 className='status'>{n.status}</h5>
+  </div>
+
+  
+  
+</div> :null
+))}
+</div>
+<div className='listofquerysAfter450px'>
+{querys.map((n,index)=>(
+  n.status !== 'pending' && n.team === 'Coordination Team' ?
+        <div id='helperQuerys' className="alert alert-secondary" role="alert"
+        key={index}
+        onClick={()=>navigate(`/manager/${name}/${n._id}`)}
+        >
+          <div className='leftQuery'>
+  <h5 className='ticket'>{n._id}
+  <span className='userQueryTitle'>- {n.queryTitle}</span>
+  </h5>
+  <div className='rightQuery'>
+  <div id='category' className="alert alert-warning" role="alert">
+  <div className='categorysName'>{n.category} </div> 
+  <div>
+     <Brightness1Icon sx={{color:n.status === 'completed' ? "#4AE211" :"#E72D1A"}}/>
+     </div>
+  </div>
+  </div>
+  
+  <h5 className='dateAndTime'>{n.currentDate}<br/>{n.currentTime}</h5>
+  <h5 className='status'>{n.status}</h5>
+  </div>
+
+  
+  
+</div> :null
+))}
+</div>
+</div>
     </div>
   )
 }
 
-export default CreateHelper
+export default CoordinationTeam;

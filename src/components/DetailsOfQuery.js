@@ -1,3 +1,4 @@
+
 import React, { useState ,useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { API } from '../global/Api'
@@ -65,4 +66,4 @@ function DetailsOfQuery() {
   )
 }
 
-export default DetailsOfQuery
+export default DetailsOfQuery;

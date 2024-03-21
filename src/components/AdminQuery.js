@@ -6,4 +6,4 @@ function AdminQuery() {
   )
 }
 
-export default AdminQuery
+export default AdminQuery;

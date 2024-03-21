@@ -129,4 +129,4 @@ function ZenClassTeam() {
   )
 }
 
-export default ZenClassTeam
+export default ZenClassTeam;

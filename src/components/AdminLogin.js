@@ -134,4 +134,4 @@ onBlur={handleBlur}
   )
 }
 
-export default AdminLogin
+export default AdminLogin;

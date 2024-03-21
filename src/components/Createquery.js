@@ -328,4 +328,4 @@ className='inputsForCreatingQuery' />
   )
 }
 
-export default Createquery
+export default Createquery;

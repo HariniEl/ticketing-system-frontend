@@ -129,4 +129,4 @@ function PreBootcampTeam() {
   )
 }
 
-export default PreBootcampTeam
+export default PreBootcampTeam;

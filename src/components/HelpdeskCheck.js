@@ -44,4 +44,4 @@ function HelpdeskCheck() {
   )
 }
 
-export default HelpdeskCheck
+export default HelpdeskCheck;

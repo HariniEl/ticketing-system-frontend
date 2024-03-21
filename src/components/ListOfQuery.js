@@ -78,4 +78,4 @@ function ListOfQuery() {
   )
 }
 
-export default ListOfQuery
+export default ListOfQuery;

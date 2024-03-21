@@ -76,4 +76,4 @@ function AssigneingToManager() {
   )
 }
 
-export default AssigneingToManager
+export default AssigneingToManager;

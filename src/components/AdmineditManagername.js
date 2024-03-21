@@ -114,4 +114,4 @@ className="inputfeild"
   )
 }
 
-export default AdmineditManagername
+export default AdmineditManagername;

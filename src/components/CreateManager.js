@@ -68,4 +68,4 @@ export default function CreateManager() {
 </div>
     </div>
   )
-}
+};

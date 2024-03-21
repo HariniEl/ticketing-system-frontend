@@ -132,4 +132,4 @@ function PlacementTeam() {
   )
 }
 
-export default PlacementTeam
+export default PlacementTeam;

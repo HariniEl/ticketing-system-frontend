@@ -71,4 +71,4 @@ function ManagementCheckQuery() {
   )
 }
 
-export default ManagementCheckQuery
+export default ManagementCheckQuery;

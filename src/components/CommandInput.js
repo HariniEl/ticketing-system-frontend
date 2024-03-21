@@ -11,4 +11,4 @@ function Input(){
         </div>
     )
 }
-export default Input
+export default Input;
